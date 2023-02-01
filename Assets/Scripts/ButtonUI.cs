@@ -5,20 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonUI : MonoBehaviour
 {
-    [SerializeField] private string Test = "Test";
-    public AudioSettings audioSettings;
 
-    private void Awake()
-    {
-        audioSettings = GetComponent<AudioSettings>();
-    }
+    [SerializeField] private string Test = "Test";
 
     public void Scene2()
     {
         SceneManager.LoadScene(Test);
     }
 }
-
-
-
-
