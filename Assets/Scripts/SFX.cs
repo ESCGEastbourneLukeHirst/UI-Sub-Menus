@@ -6,6 +6,8 @@ using TMPro;
 
 public class SFX : MonoBehaviour
 {
+    private float sfxVolume;
+
     [SerializeField] private Slider volumeSlider = null;
 
     [SerializeField] private TextMeshProUGUI volumeTextUI = null;
@@ -15,20 +17,20 @@ public class SFX : MonoBehaviour
         LoadValues();
     }
 
-    public void VolumeSlider(float volume)
+    public void VolumeSlider(float sfxVolume)
     {
-        volumeTextUI.text = volume.ToString("0, 0");
+        volumeTextUI.text = sfxVolume.ToString("0, 0");
     }
     public void SaveVolumeButton()
     {
-        float volume = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volume);
+        float sfxVolume = volumeSlider.value;
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
         LoadValues();
     }
     void LoadValues()
     {
-        float volume = PlayerPrefs.GetFloat("VolumeValue");
-        volumeSlider.value = volume;
-        AudioListener.volume = volume;
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        volumeSlider.value = sfxVolume;
+        AudioListener.volume = sfxVolume;
     }
 }

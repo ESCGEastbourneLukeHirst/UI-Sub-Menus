@@ -6,6 +6,7 @@ using TMPro;
 
 public class Music : MonoBehaviour
 {
+    private float musicVolume;
     [SerializeField] private Slider volumeSlider = null;
 
     [SerializeField] private TextMeshProUGUI volumeTextUI = null;
@@ -15,20 +16,20 @@ public class Music : MonoBehaviour
         LoadValues();
     }
 
-    public void VolumeSlider(float volume)
+    public void VolumeSlider(float musicVolume)
     {
-        volumeTextUI.text = volume.ToString("0, 0");
+        volumeTextUI.text = musicVolume.ToString("0, 0");
     }
     public void SaveVolumeButton()
     {
-        float volume = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volume);
+        float musicVolume = volumeSlider.value;
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
         LoadValues();
     }
     void LoadValues()
     {
-        float volume = PlayerPrefs.GetFloat("VolumeValue");
-        volumeSlider.value = volume;
-        AudioListener.volume = volume;
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        volumeSlider.value = musicVolume;
+        AudioListener.volume = musicVolume;
     }
 }
